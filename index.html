@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroView - Global Flight Tracker</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Globe.gl and Three.js fixed versions to prevent conflict -->
+    <script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/globe.gl@2.28.0/dist/globe.gl.min.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div id="globeViz"></div>
+    
+    <!-- Premium UI Overlay -->
+    <div id="ui-container">
+        <header class="glass-panel">
+            <h1>AeroView</h1>
+            <p>Real-Time Global Flight Tracker</p>
+        </header>
+
+        <div class="stats-panel glass-panel">
+            <div class="stat-box">
+                <span class="stat-label">Active Flights</span>
+                <span class="stat-value" id="flight-count">Loading...</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-label">Last Updated</span>
+                <span class="stat-value" id="last-updated">--</span>
+            </div>
+        </div>
+
+        <div id="simulation-badge" style="display: none;">SIMULATION MODE</div>
+
+        <div class="info-panel glass-panel" id="flight-info" style="display: none;">
+            <div class="flight-header">
+                <h2 id="fi-callsign">Callsign</h2>
+                <span id="fi-country" class="country-badge">Country</span>
+            </div>
+            <div class="flight-details">
+                <div class="detail-row">
+                    <span>Origin</span>
+                    <strong id="fi-origin">--</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Destination</span>
+                    <strong id="fi-dest">--</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Altitude</span>
+                    <strong id="fi-altitude">--</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Velocity</span>
+                    <strong id="fi-velocity">--</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Coordinates</span>
+                    <strong id="fi-coords">--</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loading-txt">Establishing Satellite Link...</div>
+    </div>
+
+    <script src="countries.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
